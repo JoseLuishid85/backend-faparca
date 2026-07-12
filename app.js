@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config({ quiet: true });
+//require('dotenv').config({ quiet: true });
+require('dotenv').config();
 const sequelize = require('./config/database');
 
 const app = express();
@@ -17,6 +18,7 @@ sequelize.sync({ alter: false })
 
 // Routes
 app.use('/faparca/api/windmill', require('./routes/windmillRouter'));
+app.use('/faparca/api/google', require('./routes/googleSheets'));
 
 const PORT = process.env.PORT || 4000;
 
